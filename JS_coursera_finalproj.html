@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <link rel="stylesheet" href="JS_final_gallery.css">
+    <script>
+        function upDate(previewPic){
+            previewPic.style.opacity = 1.0;
+            console.log('upDate function encountered');
+            const x = document.getElementById("image");
+            x.innerHTML = previewPic.alt;
+            x.style.backgroundImage = 'url("'+previewPic.src+'")';
+            x.style.backgroundColor = "#25efbc"
+            console.log(previewPic.src);
+            x.style.backgroundRepeat = "no-repeat";
+            x.style.backgroundSize = "100% 100%";
+        }
+
+        function unDo(previewPic){
+            previewPic.style.opacity = 0.5;
+            console.log('unDo function encountered');
+            const x = document.getElementById("image");
+            x.style.backgroundImage = "url('')";
+            x.style.backgroundRepeat = "no-repeat";
+            x.style.backgroundColor = "#8e68ff"
+            x.innerHTML = "Hover over an image below to display here.";
+        }
+
+        function focus_func(previewPic){
+            previewPic.style.opacity = 1.0;
+            console.log("onfocus event encountered");
+            const x = document.getElementById("image");
+            x.innerHTML = previewPic.alt;
+            x.style.backgroundImage = 'url("'+previewPic.src+'")';
+            x.style.backgroundColor = "#25efbc";
+            console.log(previewPic.src);
+            x.style.backgroundRepeat = "no-repeat";
+            x.style.backgroundSize = "100% 100%";
+        }
+
+        function blur_func(previewPic){
+            previewPic.style.opacity = 0.5;
+            console.log("onblur event encountered");
+            const x = document.getElementById("image");
+            x.style.backgroundImage = "url('')";
+            x.style.backgroundRepeat = "no-repeat";
+            x.style.backgroundColor = "#8e68ff"
+            x.innerHTML = "Hover over an image below to display here.";
+        }
+
+        function setTabIndex(){
+            console.log("onload event encountered");
+            images = document.querySelectorAll(".preview");
+            for(let i=0; i<images.length; i++){
+                console.log("Image"+(i+1))
+                images[i].setAttribute("tabindex", i+1);
+            }
+        }
+    </script>
+</head>
+<body onload="setTabIndex()">
+    <div id="image">
+        Hover over an image below to display here.
+    </div>
+
+    <img class="preview" src="mount_fuji.jpg" alt="Picture of Mount Fuji, Japan"
+    onmouseover="upDate(this)" onmouseout="unDo(this)" onfocus="focus_func(this)" onblur="blur_func(this)">
+    
+    <img class="preview" src="Cherry_blossoms.jpeg" alt="Picture of Cherry Blossoms"
+    onmouseover="upDate(this)" onmouseout="unDo(this)" onfocus="focus_func(this)" onblur="blur_func(this)">
+
+    <img class="preview" src="kyoto.jpg" alt="Picture of Kyoto, Japan"
+    onmouseover="upDate(this)" onmouseout="unDo(this)" onfocus="focus_func(this)" onblur="blur_func(this)">
+
+    <img class="preview" src="Switzerland.jpg" alt="Picture of Switzerland"
+    onmouseover="upDate(this)" onmouseout="unDo(this)" onfocus="focus_func(this)" onblur="blur_func(this)">
+
+    <img class="preview" src="Victoria_Falls.jpg" alt="Picture of Victoria Falls"
+    onmouseover="upDate(this)" onmouseout="unDo(this)" onfocus="focus_func(this)" onblur="blur_func(this)">
+
+    <img class="preview" src="River_Ganga.jpg" alt="Picture of River Ganga, India"
+    onmouseover="upDate(this)" onmouseout="unDo(this)" onfocus="focus_func(this)" onblur="blur_func(this)">
+</body>
+</html>
